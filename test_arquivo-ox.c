@@ -1,14 +1,15 @@
 #include <assert.h>
+#include "function_skibidi.c"
 
-int test_valide(char c);
+int validar(char c);
 
 int main()
 {
-    assert(test_valide('X') == 1);
-    assert(test_valide('O') == 1);
+    assert(validar('X') == 1);
+    assert(validar('O') == 1);
 
-    assert(test_valide('A') == 0);
-    assert(test_valide('x') == 0);
+    assert(validar('A') == 0);
+    assert(validar('x') == 0);
 
     return 0;
 }
