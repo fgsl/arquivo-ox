@@ -1,4 +1,4 @@
-name: C Tests
+name: C Project
 
 on:
   push:
@@ -9,14 +9,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Baixar código
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Instalar GCC
-        run: sudo apt-get update && sudo apt-get install -y gcc
+      - name: Compilar programa principal
+        run: |
+          gcc -Wall -Wextra -o programa main.c
 
-      - name: Compilar
-        run: gcc -Wall -Wextra -o teste main.c
+      - name: Executar programa
+        run: |
+          ./programa teste.txt O O O X X X O O O
+
+      - name: Verificar arquivo gerado
+        run: |
+          test -f teste.txt
+
+      - name: Compilar testes
+        run: |
+          gcc -Wall -Wextra -o testes test_validar.c function_skibidi.c
 
       - name: Executar testes
-        run: ./teste
+        run: |
+          ./testes
