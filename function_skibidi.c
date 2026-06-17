@@ -8,7 +8,7 @@ int validar(char c)
     return 0;
 }
 
-void gravar(char matriz[3][3], char skibidiArquivo[])
+int gravar(char matriz[3][3], char skibidiArquivo[])
 {
     FILE *arquivo;
 
