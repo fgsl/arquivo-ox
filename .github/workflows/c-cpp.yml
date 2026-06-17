@@ -14,11 +14,11 @@ jobs:
 
       - name: Compilar programa principal
         run: |
-          gcc ./test_arquivo-ox.c -o test_arquivo-ox
+          gcc ./arquivo-ox.c -o arquivo-ox
 
       - name: Executar programa
         run: |
-          ./programa teste.txt O O O X X X O O O
+          ./programa skibidiArquivo.txt O O O X X X O O O
 
       - name: Verificar arquivo gerado
         run: |
