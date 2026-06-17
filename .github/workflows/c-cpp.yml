@@ -1,19 +1,22 @@
-name: C/C++ CI
+name: C Tests
 
 on:
   push:
-    branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: compile
-      run: gcc ./test_arquivo-ox.c -o test_arquivo-ox
-    - name: execute
-      run: ./test_arquivo-ox
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Instalar GCC
+        run: sudo apt-get update && sudo apt-get install -y gcc
+
+      - name: Compilar
+        run: gcc -Wall -Wextra -o teste main.c
+
+      - name: Executar testes
+        run: ./teste
