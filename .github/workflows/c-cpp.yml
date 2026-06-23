@@ -18,11 +18,11 @@ jobs:
 
       - name: Executar programa
         run: |
-          ./arquivo-ox skibidiArquivo.txt O O O X X X O O O
+          ./arquivo-ox sahurArquivo.txt O O O X X X O O O
 
       - name: Verificar arquivo gerado
         run: |
-          test -f skibidiArquivo.txt
+          test -f sahurArquivo.txt
 
       - name: Compilar testes
         run: |
