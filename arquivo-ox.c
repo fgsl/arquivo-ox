@@ -2,35 +2,46 @@
 #include <stdlib.h>
 #include "function_triplet.c"
 
-int validar(char c);
-int gravar(char matriz[3][3], char sahurArquivo[]);
-
 int main(int argc, char *argv[])
 {
     char matriz[3][3];
     int i, j;
     int k = 2;
+    int linha,coluna;
 
-    if(argc != 11)
+    if (argc == 2)
     {
-        printf("Uso: %s arquivo.txt O O O X X X O O O\n", argv[0]);
-        return 1;
-    }
-
-    for(i = 0; i < 3; i++)
-    {
-        for(j = 0; j < 3; j++)
+        for(int i=0; i<3; i++)
         {
-            matriz[i][j] = argv[k][0];
-
-            if(!validar(matriz[i][j]))
+            for(int j=0; j<3; j++)
             {
-                printf("Erro: use apenas X ou O\n");
-                return 1;
+                linha = i+1;
+                coluna = j+1;
+                printf("Digite o elemento da linha %d e da coluna %d:\n",linha,coluna);
+                scanf("%d",matriz[i][j]);                
             }
-
-            k++;
         }
+    } else if(argc == 11)
+    {
+        for(i = 0; i < 3; i++)
+        {
+            for(j = 0; j < 3; j++)
+            {
+                matriz[i][j] = argv[k][0];
+
+                if(!validar(matriz[i][j]))
+                {
+                    printf("Erro: use apenas X ou O\n");
+                    return 1;
+                }
+                k++;
+            }
+        }
+    } else 
+    {
+        printf("Uso: %s arquivo.txt OU\n", argv[0]);        
+        printf("%s arquivo.txt O O O X X X O O O\n", argv[0]);
+        return 1;
     }
 
     gravar(matriz, argv[1]);
